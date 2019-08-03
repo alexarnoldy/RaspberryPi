@@ -1,0 +1,18 @@
+https://raspberrypi.stackexchange.com/questions/63586/how-to-set-vnc-security-settings-using-ssh-no-security-types-supported-server
+
+To be able to use a non-compatible realvnc client you have to downgrade the security of the realvnc server to use vnc password authentication. To be able to to this without a desktop connection open a SSH session:
+
+    Edit the config file in /root/.vnc/config.d/vncserver-x11
+
+    Add the following lines at the end of the file
+
+    Authentication=VncAuth
+    Encryption=AlwaysOff
+    Password=e0fd0472492935da
+
+    Restart the server
+
+This will set the authentication with the password: foobar. In order to change the password,
+
+vncpasswd -service
+
